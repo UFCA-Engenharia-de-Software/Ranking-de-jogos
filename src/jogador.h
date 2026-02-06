@@ -1,0 +1,10 @@
+/*
+Arquivo: jogador.h
+Descrição:
+Define a estrutura Jogador, que representa a entidade básica do sistema
+de ranking de jogos online. A estrutura armazena as informações
+necessárias para a ordenação e análise de desempenho dos jogadores,
+como nickname, pontuação, nível e tempo jogado.
+
+Também contém a declaração das funções relacionadas ao jogador.
+*/
