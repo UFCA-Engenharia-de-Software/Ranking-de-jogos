@@ -1,10 +1,19 @@
-/*
-Arquivo: ordenacoes.h
-Descrição:
-Declara os algoritmos clássicos de ordenação utilizados no trabalho,
-como Bubble Sort, Insertion Sort, Selection Sort, Quick Sort e Merge
-Sort.
+#ifndef ORDENACOES_H
+#define ORDENACOES_H
 
-Os algoritmos permitem a ordenação dos jogadores segundo diferentes
-critérios, como pontuação, nível e tempo jogado.
-*/
+/* Forward declaration do nó da lista */
+typedef struct No No;
+
+/* Critérios de ordenação */
+typedef enum {
+    ORDENAR_PONTUACAO = 1,
+    ORDENAR_NIVEL,
+    ORDENAR_TEMPO,
+    ORDENAR_COMBINADO
+} CriterioOrdenacao;
+
+/* Algoritmos de ordenação */
+void insertion_sort(No **head, CriterioOrdenacao criterio);
+void merge_sort(No **head, CriterioOrdenacao criterio);
+
+#endif
