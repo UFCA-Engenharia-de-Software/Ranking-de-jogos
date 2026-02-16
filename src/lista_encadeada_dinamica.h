@@ -8,3 +8,18 @@ busca, impressão e liberação de memória.
 A lista encadeada dinâmica utiliza alocação dinâmica de memória,
 permitindo crescimento flexível conforme a quantidade de jogadores.
 */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "jogador.h"
+
+typedef struct No{
+    Jogador dado;
+    struct No* anterior;
+    struct No* proximo;
+}No;
+
+typedef struct{
+    No* inicio;
+    No* fim;
+}Lista;
