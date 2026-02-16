@@ -19,7 +19,7 @@ typedef struct No{
     struct No* proximo;
 }No;
 
-typedef struct{
+typedef struct ListaD{
     No* inicio;
     No* fim;
-}Lista;
+}ListaD;

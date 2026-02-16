@@ -8,3 +8,13 @@ como nickname, pontuação, nível e tempo jogado.
 
 Também contém a declaração das funções relacionadas ao jogador.
 */
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Jogador{
+    char nickname[50];
+    int pontuacao;
+    int nivel;
+    float tempo_jogado;
+}Jogador;
+
