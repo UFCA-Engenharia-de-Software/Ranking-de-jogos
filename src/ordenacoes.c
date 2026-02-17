@@ -124,3 +124,56 @@ void merge_sort(No **head, CriterioOrdenacao criterio) {
 
     *head = merge_sort_rec(*head, criterio);
 }
+
+/* Merge Sort – Lista Estática (Funções auxiliares) */
+
+/* Função auxiliar para mesclar dois subvetores */
+static void merge_estatico(Jogador v[], int inicio, int meio, int fim,
+                           CriterioOrdenacao criterio) {
+
+    int i = inicio;
+    int j = meio + 1;
+    int k = 0;
+
+    Jogador temp[fim - inicio + 1];
+
+    while (i <= meio && j <= fim) {
+        if (comparar(v[i], v[j], criterio))
+            temp[k++] = v[i++];
+        else
+            temp[k++] = v[j++];
+    }
+
+    while (i <= meio)
+        temp[k++] = v[i++];
+
+    while (j <= fim)
+        temp[k++] = v[j++];
+
+    for (i = inicio, k = 0; i <= fim; i++, k++)
+        v[i] = temp[k];
+}
+
+/* Função recursiva do Merge Sort */
+static void merge_sort_estatico_rec(Jogador v[], int inicio, int fim,
+                                    CriterioOrdenacao criterio) {
+
+    if (inicio >= fim)
+        return;
+
+    int meio = (inicio + fim) / 2;
+
+    merge_sort_estatico_rec(v, inicio, meio, criterio);
+    merge_sort_estatico_rec(v, meio + 1, fim, criterio);
+    merge_estatico(v, inicio, meio, fim, criterio);
+}
+
+/* MERGE SORT – Interface pública (Lista Estática) */
+void merge_sort_estatico(Jogador v[], int tamanho,
+                         CriterioOrdenacao criterio) {
+
+    if (!v || tamanho <= 1)
+        return;
+
+    merge_sort_estatico_rec(v, 0, tamanho - 1, criterio);
+}
