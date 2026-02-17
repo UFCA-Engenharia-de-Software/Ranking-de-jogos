@@ -11,11 +11,13 @@ estrutura com a lista encadeada dinâmica em termos de desempenho.
 #ifndef LISTA_ENCADEADA_ESTATICA_H
 #define LISTA_ENCADEADA_ESTATICA_H
 
-#define MAX 100
+#include "jogador.h"
+
+#define MAX 10000
 #define INVALIDO -1
 
 typedef struct {
-    int valor;
+    Jogador jogador;
     int proximo;
     int anterior;
 } No;
