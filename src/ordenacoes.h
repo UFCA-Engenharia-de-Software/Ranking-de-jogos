@@ -16,7 +16,6 @@ critérios, como pontuação, nível e tempo jogado.
 typedef struct No No;
 
 #include "lista_encadeada_estatica.h"
-#include "lista_encadeada_estatica.h"
 
 /* Critérios de ordenação */
 typedef enum {
