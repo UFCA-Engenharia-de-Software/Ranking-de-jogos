@@ -9,8 +9,9 @@ A lista encadeada dinâmica utiliza alocação dinâmica de memória,
 permitindo crescimento flexível conforme a quantidade de jogadores.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef LISTA_ENCADEADA_DINAMICA_H
+#define LISTA_ENCADEADA_DINAMICA_H
+
 #include "jogador.h"
 
 typedef struct No{
@@ -23,3 +24,4 @@ typedef struct ListaD{
     No* inicio;
     No* fim;
 }ListaD;
+#endif
