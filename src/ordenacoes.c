@@ -1,3 +1,16 @@
+
+/*
+Arquivo: ordenacoes.c
+Descrição:
+Implementa os algoritmos de ordenação declarados em ordenacoes.h.
+Cada algoritmo é aplicado sobre as estruturas de dados utilizadas
+no sistema.
+
+Os algoritmos são avaliados por meio de análises teóricas e
+experimentos práticos, considerando diferentes volumes de dados e
+tipos de entrada.
+*/
+
 #include <stddef.h>             
 #include "ordenacoes.h"
 #include "jogador.h"                 
@@ -27,7 +40,7 @@ static int comparar(Jogador a, Jogador b, CriterioOrdenacao criterio) {
 }
 
 /* Insection Sort – Lista Duplamente Encadeada */
-void insertion_sort(No **head, CriterioOrdenacao criterio) {
+void insertion_sort_dinamico(No **head, CriterioOrdenacao criterio) {
     if (!head || !*head || !(*head)->next)
         return;
 
@@ -176,4 +189,54 @@ void merge_sort_estatico(Jogador v[], int tamanho,
         return;
 
     merge_sort_estatico_rec(v, 0, tamanho - 1, criterio);
+}
+
+// Insertion sort estático 
+
+void insertion_sort_estatico(Lista *lista) {
+    if (lista->inicio == -1 || lista->vetor[lista->inicio].proximo == -1)
+        return;
+
+    int ordenado = lista->inicio;
+    int atual = lista->vetor[ordenado].proximo;
+
+    lista->vetor[ordenado].proximo = -1;
+    lista->vetor[ordenado].anterior = -1;
+
+    while (atual != -1) {
+        int proximoAtual = lista->vetor[atual].proximo;
+
+        // desconecta o nó atual
+        lista->vetor[atual].proximo = -1;
+        lista->vetor[atual].anterior = -1;
+
+        int proximo = ordenado;
+        int anterior = -1;
+
+        while (proximo != -1 &&
+               lista->vetor[proximo].valor < lista->vetor[atual].valor) {
+            anterior = proximo;
+            proximo = lista->vetor[proximo].proximo;
+        }
+
+        // inserção no início
+        if (anterior == -1) {
+            lista->vetor[atual].proximo = ordenado;
+            lista->vetor[ordenado].anterior = atual;
+            ordenado = atual;
+        }
+        // inserção no meio ou fim
+        else {
+            lista->vetor[atual].proximo = proximo;
+            lista->vetor[atual].anterior = anterior;
+            lista->vetor[anterior].proximo = atual;
+
+            if (proximo != -1)
+                lista->vetor[proximo].anterior = atual;
+        }
+
+        atual = proximoAtual;
+    }
+
+    lista->inicio = ordenado;
 }
