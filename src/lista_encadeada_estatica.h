@@ -7,3 +7,15 @@ pré-alocado, e declara as funções responsáveis por sua manipulação.
 O gerenciamento manual das posições livres permite comparar esta
 estrutura com a lista encadeada dinâmica em termos de desempenho.
 */
+#ifndef LISTA_ENCADEADA_ESTATICA_H
+#define LISTA_ENCADEADA_ESTATICA_H
+
+#define MAX 100
+
+typedef struct {
+    int elementos[MAX];
+    int tamanho;
+} ListaEstatica;
+
+#endif
+
