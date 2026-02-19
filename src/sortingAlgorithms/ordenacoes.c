@@ -39,6 +39,44 @@ static int comparar(Jogador a, Jogador b, CriterioOrdenacao criterio) {
     return 0;
 }
 
+/* Quick Sort – Lista Dinâmica (Funções auxiliares e interface pública) */
+static No* partition(No *low, No *high, CriterioOrdenacao criterio) {
+    Jogador pivot = high->dado;
+    No *i = low->prev;
+
+    for (No *j = low; j != high; j = j->next) {
+        if (comparar(j->dado, pivot, criterio)) {
+            i = (i == NULL) ? low : i->next;
+            Jogador temp = i->dado;
+            i->dado = j->dado;
+            j->dado = temp;
+        }
+    }
+    i = (i == NULL) ? low : i->next;
+    Jogador temp = i->dado;
+    i->dado = high->dado;
+    high->dado = temp;
+    return i;
+}
+
+static void quick_sort_rec(No *low, No *high, CriterioOrdenacao criterio) {
+    if (high != NULL && low != high && low != high->next) {
+        No *p = partition(low, high, criterio);
+        quick_sort_rec(low, p->prev, criterio);
+        quick_sort_rec(p->next, high, criterio);
+    }
+}
+
+void quick_sort_dinamico(No **head, CriterioOrdenacao criterio) {
+    if (!head || !*head) return;
+
+    No *last = *head;
+    while (last->next != NULL)
+        last = last->next;
+
+    quick_sort_rec(*head, last, criterio);
+}
+
 /* Insection Sort – Lista Duplamente Encadeada */
 void insertion_sort_dinamico(No **head, CriterioOrdenacao criterio) {
     if (!head || !*head || !(*head)->next)
@@ -190,6 +228,38 @@ void merge_sort_estatico(Jogador v[], int tamanho,
 
     merge_sort_estatico_rec(v, 0, tamanho - 1, criterio);
 }
+/* Quick Sort – Lista Estática (Funções auxiliares e interface pública) */
+static int partition_estatico(Jogador v[], int low, int high, CriterioOrdenacao criterio) {
+    Jogador pivot = v[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (comparar(v[j], pivot, criterio)) {
+            i++;
+            Jogador temp = v[i];
+            v[i] = v[j];
+            v[j] = temp;
+        }
+    }
+    Jogador temp = v[i + 1];
+    v[i + 1] = v[high];
+    v[high] = temp;
+    return i + 1;
+}
+
+static void quick_sort_estatico_rec(Jogador v[], int low, int high, CriterioOrdenacao criterio) {
+    if (low < high) {
+        int pi = partition_estatico(v, low, high, criterio);
+        quick_sort_estatico_rec(v, low, pi - 1, criterio);
+        quick_sort_estatico_rec(v, pi + 1, high, criterio);
+    }
+}
+
+void quick_sort_estatico(Jogador v[], int tamanho, CriterioOrdenacao criterio) {
+    if (!v || tamanho <= 1) return;
+    quick_sort_estatico_rec(v, 0, tamanho - 1, criterio);
+}
+
 
 // Insertion sort estático 
 

@@ -41,7 +41,11 @@ void merge_sort_estatico(Jogador v[], int tamanho,
 
 void insertion_sort_estatico(Lista *lista);
 
+/* Quick Sort – lista dinâmica */
 void quick_sort_dinamico(No **head, CriterioOrdenacao criterio);
-void quick_sort_estatico(Lista *lista, CriterioOrdenacao criterio);
+
+/* Quick Sort – lista estática */
+void quick_sort_estatico(Jogador v[], int tamanho, CriterioOrdenacao criterio);
+
 
 #endif
