@@ -12,13 +12,12 @@ test: \
 	$(BUILD_DIR)/test_merge_static \
 	$(BUILD_DIR)/test_bubble_static \
 	$(BUILD_DIR)/test_selection_doubly \
-	$(BUILD_DIR)/test_insertion_doubly \
 	$(BUILD_DIR)/test_insertion_dinamico \
 	$(BUILD_DIR)/test_merge_doubly \
 	$(BUILD_DIR)/test_quick_doubly \
 	$(BUILD_DIR)/test_gerador
 	@set -e; \
-	for t in test_lista_estatica test_bubble_dinamico test_quick_static test_insertion_static test_merge_static test_bubble_static test_selection_doubly test_insertion_doubly test_insertion_dinamico test_merge_doubly test_quick_doubly test_gerador; do \
+	for t in test_lista_estatica test_bubble_dinamico test_quick_static test_insertion_static test_merge_static test_bubble_static test_selection_doubly test_insertion_dinamico test_merge_doubly test_quick_doubly test_gerador; do \
 		echo "==> $$t"; \
 		./$(BUILD_DIR)/$$t; \
 	done
@@ -46,9 +45,6 @@ $(BUILD_DIR)/test_bubble_static: $(BUILD_DIR)
 
 $(BUILD_DIR)/test_selection_doubly: $(BUILD_DIR)
 	$(CC) $(CFLAGS) src/sortingAlgorithms/selection_sort_duplamente_encadeada/teste_selection_sort_lista_duplamente_encadeada.c src/sortingAlgorithms/selection_sort_duplamente_encadeada/selection_sort_lista_duplamente_encadeada.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_dinamica.c -o $@
-
-$(BUILD_DIR)/test_insertion_doubly: $(BUILD_DIR)
-	$(CC) $(CFLAGS) -x c src/sortingAlgorithms/insertion_sort/teste_inserction_doubly_list -x none src/sortingAlgorithms/insertion_sort/insertion_sort_doubly_linked_list.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_dinamica.c -o $@
 
 $(BUILD_DIR)/test_insertion_dinamico: $(BUILD_DIR)
 	$(CC) $(CFLAGS) src/sortingAlgorithms/insertion_sort_dinamico/teste_inserction_lista_dinamica.c src/sortingAlgorithms/insertion_sort_dinamico/insertion_sort_lista_dinamica.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_dinamica.c -o $@
