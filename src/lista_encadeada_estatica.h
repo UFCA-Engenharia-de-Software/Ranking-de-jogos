@@ -28,4 +28,9 @@ typedef struct {
     int livre;
 } Lista;
 
+// Declarando as funções
+void initLista(Lista *lista);
+int insert(Lista *lista, Jogador jogador);
+void print(Lista *lista);
+
 #endif
