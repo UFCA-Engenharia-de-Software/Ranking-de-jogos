@@ -4,7 +4,7 @@
  * Insertion Sort para lista duplamente encadeada.
  * Ordenação decrescente por pontuação.
  */
-void insertionSortListaDupla(NoDuplo **head)
+void insertionSortListaDupla(NoDuplo **head, CriterioOrdenacao criterio)
 {
     if (*head == NULL || (*head)->next == NULL)
         return;
@@ -19,7 +19,7 @@ void insertionSortListaDupla(NoDuplo **head)
         current->prev = current->next = NULL;
 
         if (sorted == NULL ||
-            current->data.pontuacao >= sorted->data.pontuacao)
+            comparar(current->data, sorted->data, criterio))
         {
             current->next = sorted;
             if (sorted)
@@ -31,7 +31,7 @@ void insertionSortListaDupla(NoDuplo **head)
             NoDuplo *temp = sorted;
 
             while (temp->next != NULL &&
-                   temp->next->data.pontuacao > current->data.pontuacao)
+                   !comparar(current->data, temp->next->data, criterio))
             {
                 temp = temp->next;
             }

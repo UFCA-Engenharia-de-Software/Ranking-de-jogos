@@ -42,7 +42,7 @@ int main()
     imprimir(&lista);
 
     /* Chamada do merge sort */
-    mergeSortListaEstatica(&lista);
+    mergeSortListaEstatica(&lista, ORDENAR_PONTUACAO);
 
     printf("\n=== Depois da ordenação (Merge Sort) ===\n");
     imprimir(&lista);

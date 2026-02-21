@@ -1,6 +1,6 @@
 #include "insertion_sort_estatico.h"
 
-void insertionSortEstatica(Lista *lista)
+void insertionSortEstatica(Lista *lista, CriterioOrdenacao criterio)
 {
     if (lista == NULL || lista->inicio == INVALIDO) {
         return;
@@ -19,7 +19,7 @@ void insertionSortEstatica(Lista *lista)
         int anterior = lista->vetor[atual].anterior;
 
         while (anterior != INVALIDO &&
-               lista->vetor[anterior].jogador.pontuacao < chave.pontuacao) {
+               comparar(chave, lista->vetor[anterior].jogador, criterio)) {
             int destino = lista->vetor[anterior].proximo;
             lista->vetor[destino].jogador = lista->vetor[anterior].jogador;
 

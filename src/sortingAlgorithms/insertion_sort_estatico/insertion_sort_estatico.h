@@ -2,8 +2,8 @@
 #define INSERTION_SORT_ESTATICO_H
 
 #include "../../lista_encadeada_estatica.h"
+#include "../sorting_utils.h"
 
-/* Ordena a lista estatica por pontuacao (decrescente). */
-void insertionSortEstatica(Lista *lista);
+void insertionSortEstatica(Lista *lista, CriterioOrdenacao criterio);
 
 #endif /* INSERTION_SORT_ESTATICO_H */

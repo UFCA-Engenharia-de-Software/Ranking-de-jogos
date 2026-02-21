@@ -96,8 +96,6 @@ int busca(Lista *lista, const char *nickname) {
 
     int atual = lista->inicio;
 
-    int posicao = 1;
-
     while (atual != INVALIDO) {
         if (strcmp(lista ->vetor[atual].jogador.nickname, nickname) == 0) {
             return atual;

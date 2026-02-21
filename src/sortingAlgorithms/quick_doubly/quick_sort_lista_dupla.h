@@ -1,14 +1,9 @@
 #ifndef QUICK_SORT_LISTA_DUPLA_H
 #define QUICK_SORT_LISTA_DUPLA_H
 
-#include "jogador.h"
+#include "../../lista_encadeada_dinamica.h"
+#include "../sorting_utils.h"
 
-typedef struct DoublyNode {
-    Jogador data;
-    struct DoublyNode *prev;
-    struct DoublyNode *next;
-} DoublyNode;
-
-void quickSortDoublyLinkedList(DoublyNode **head);
+void quickSortDoublyLinkedList(NoDuplo **head, CriterioOrdenacao criterio);
 
 #endif

@@ -10,8 +10,8 @@ Ordenação decrescente por pontuação.
 #define INSERTION_SORT_DOUBLY_LINKED_LIST_H
 
 #include "../../lista_encadeada_dinamica.h"
+#include "../sorting_utils.h"
 
-/* Ordena a lista por pontuação (decrescente). */
-void insertionSortListaDupla(NoDuplo **head);
+void insertionSortListaDupla(NoDuplo **head, CriterioOrdenacao criterio);
 
 #endif

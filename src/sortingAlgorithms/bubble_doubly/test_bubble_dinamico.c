@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 #include "../../lista_encadeada_dinamica.h"
 #include "../sorting_utils.h"
@@ -9,8 +11,9 @@
 
 int main()
 {
-
+#ifdef _WIN32
     SetConsoleOutputCP(65001);
+#endif
     NoDuplo *inicio = NULL;
 
     // Criando jogadores com dados desordenados para garantir cenários abrangentes.

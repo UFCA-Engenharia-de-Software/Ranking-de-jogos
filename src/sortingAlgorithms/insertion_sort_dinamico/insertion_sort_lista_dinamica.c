@@ -1,25 +1,25 @@
 #include <stdlib.h>
 #include "insertion_sort_dinamica.h"
 
-void insertionSortListaDinamica(DoublyNode **head)
+void insertionSortListaDinamica(NoDuplo **head, CriterioOrdenacao criterio)
 {
     if (head == NULL || *head == NULL)
         return;
 
-    DoublyNode *atual = (*head)->next;
+    NoDuplo *atual = (*head)->next;
 
     while (atual != NULL)
     {
-        DoublyNode *chave = atual;
-        DoublyNode *anterior = atual->prev;
+        NoDuplo *chave = atual;
+        NoDuplo *anterior = atual->prev;
 
         while (anterior != NULL &&
-               anterior->data.pontuacao > chave->data.pontuacao)
+               comparar(chave->data, anterior->data, criterio))
         {
             anterior = anterior->prev;
         }
 
-        DoublyNode *proximo = atual->next;
+        NoDuplo *proximo = atual->next;
 
         /* Remove chave da posição atual */
         if (chave->prev)

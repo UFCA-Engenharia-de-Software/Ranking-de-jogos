@@ -26,7 +26,7 @@ int main(void)
     printf("Antes:\n");
     imprimir(&lista);
 
-    insertionSortListaDupla(&lista);
+    insertionSortListaDupla(&lista, ORDENAR_PONTUACAO);
 
     printf("\nDepois (Insertion Sort):\n");
     imprimir(&lista);

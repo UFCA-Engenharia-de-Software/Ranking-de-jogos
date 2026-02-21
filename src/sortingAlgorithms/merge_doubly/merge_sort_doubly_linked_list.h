@@ -10,8 +10,8 @@ pela pontuação do jogador.
 #define MERGE_SORT_DOUBLY_LINKED_LIST_H
 
 #include "../../lista_encadeada_dinamica.h"
+#include "../sorting_utils.h"
 
-/* Ordena a lista duplamente encadeada por pontuação (decrescente). */
-void mergeSortListaDupla(NoDuplo **head);
+void mergeSortListaDupla(NoDuplo **head, CriterioOrdenacao criterio);
 
 #endif /* MERGE_SORT_DOUBLY_LINKED_LIST_H */

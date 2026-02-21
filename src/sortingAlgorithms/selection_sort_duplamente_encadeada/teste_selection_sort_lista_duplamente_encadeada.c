@@ -20,29 +20,29 @@ static Jogador criarJogador(const char *nick,
 
 int main(void)
 {
-    DoublyNode *lista = NULL;
+    NoDuplo *lista = NULL;
 
     printf("=== Teste: Selection Sort (Lista Duplamente Encadeada) ===\n");
 
-    insert(&lista, criarJogador("Alice",   300,  5, 12.5));
-    insert(&lista, criarJogador("Bob",     150,  3,  8.0));
-    insert(&lista, criarJogador("Carlos",  500, 10, 25.0));
-    insert(&lista, criarJogador("Diana",   200,  4, 10.0));
-    insert(&lista, criarJogador("Eve",     500,  8, 20.0));
-    insert(&lista, criarJogador("Frank",    50,  1,  2.0));
+    inserir(&lista, criarJogador("Alice",   300,  5, 12.5));
+    inserir(&lista, criarJogador("Bob",     150,  3,  8.0));
+    inserir(&lista, criarJogador("Carlos",  500, 10, 25.0));
+    inserir(&lista, criarJogador("Diana",   200,  4, 10.0));
+    inserir(&lista, criarJogador("Eve",     500,  8, 20.0));
+    inserir(&lista, criarJogador("Frank",    50,  1,  2.0));
 
     printf("\nAntes da ordenação:\n");
-    print(&lista);
+    imprimir(&lista);
 
-    ordenacaoPorSelecaoListaDuplamenteEncadeada(&lista);
+    ordenacaoPorSelecaoListaDuplamenteEncadeada(&lista, ORDENAR_PONTUACAO);
 
     printf("\nDepois da ordenação (pontuação decrescente):\n");
-    print(&lista);
+    imprimir(&lista);
 
     /* Verificação estrutural dos ponteiros prev */
     printf("\nVerificando ponteiros prev... ");
     int ok = 1;
-    for (DoublyNode *p = lista; p != NULL && p->next != NULL; p = p->next)
+    for (NoDuplo *p = lista; p != NULL && p->next != NULL; p = p->next)
     {
         if (p->next->prev != p)
         {
@@ -58,7 +58,7 @@ int main(void)
     if (ok)
         printf("OK!\n");
 
-    free_list(&lista);
+    liberar_lista(&lista);
 
     printf("\nTeste finalizado.\n");
     return 0;

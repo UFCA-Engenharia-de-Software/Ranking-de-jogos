@@ -29,7 +29,7 @@ int main(void)
     printf("=== LISTA ANTES DO INSERTION SORT ===\n");
     imprimir(&lista);
 
-    insertionSortEstatica(&lista);
+    insertionSortEstatica(&lista, ORDENAR_PONTUACAO);
 
     printf("\n=== LISTA APOS INSERTION SORT (pontuacao decrescente) ===\n");
     imprimir(&lista);

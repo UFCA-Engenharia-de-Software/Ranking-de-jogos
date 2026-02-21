@@ -20,22 +20,22 @@ static Jogador criarJogador(const char *nick,
 
 int main(void)
 {
-    DoublyNode *lista = NULL;
+    NoDuplo *lista = NULL;
 
-    insert(&lista, criarJogador("Carlos", 300, 10, 25.5));
-    insert(&lista, criarJogador("Ana", 150, 5, 10.0));
-    insert(&lista, criarJogador("Bruno", 450, 15, 40.2));
-    insert(&lista, criarJogador("Daniel", 200, 7, 18.4));
+    inserir(&lista, criarJogador("Carlos", 300, 10, 25.5));
+    inserir(&lista, criarJogador("Ana", 150, 5, 10.0));
+    inserir(&lista, criarJogador("Bruno", 450, 15, 40.2));
+    inserir(&lista, criarJogador("Daniel", 200, 7, 18.4));
 
     printf("Antes:\n");
-    print(&lista);
+    imprimir(&lista);
 
-    insertionSortListaDinamica(&lista);
+    insertionSortListaDinamica(&lista, ORDENAR_PONTUACAO);
 
     printf("\nDepois:\n");
-    print(&lista);
+    imprimir(&lista);
 
-    free_list(&lista);
+    liberar_lista(&lista);
 
     return 0;
 }

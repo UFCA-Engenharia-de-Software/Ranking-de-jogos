@@ -8,16 +8,17 @@
  * Abordagem recursiva: a cada chamada, escolhe o nó com maior
  * pontuação e o coloca na frente da lista resultante.
  */
-static NoDuplo *mesclar(NoDuplo *left, NoDuplo *right)
+static NoDuplo *mesclar(NoDuplo *left, NoDuplo *right,
+                        CriterioOrdenacao criterio)
 {
     if (left == NULL)
         return right;
     if (right == NULL)
         return left;
 
-    if (left->data.pontuacao >= right->data.pontuacao)
+    if (comparar(left->data, right->data, criterio))
     {
-        left->next = mesclar(left->next, right);
+        left->next = mesclar(left->next, right, criterio);
         if (left->next)
             left->next->prev = left;
         left->prev = NULL;
@@ -25,7 +26,7 @@ static NoDuplo *mesclar(NoDuplo *left, NoDuplo *right)
     }
     else
     {
-        right->next = mesclar(left, right->next);
+        right->next = mesclar(left, right->next, criterio);
         if (right->next)
             right->next->prev = right;
         right->prev = NULL;
@@ -43,7 +44,7 @@ static NoDuplo *mesclar(NoDuplo *left, NoDuplo *right)
  *   3. Chame mergeSort() recursivamente nas duas metades
  *   4. Chame mesclar() para mesclar as duas metades ordenadas
  */
-void mergeSortListaDupla(NoDuplo **head)
+void mergeSortListaDupla(NoDuplo **head, CriterioOrdenacao criterio)
 {
     if (*head == NULL || (*head)->next == NULL)
     {
@@ -57,8 +58,8 @@ void mergeSortListaDupla(NoDuplo **head)
     if (secondHalf != NULL)
         secondHalf->prev = NULL;
 
-    mergeSortListaDupla(head);
-    mergeSortListaDupla(&secondHalf);
+    mergeSortListaDupla(head, criterio);
+    mergeSortListaDupla(&secondHalf, criterio);
 
-    *head = mesclar(*head, secondHalf);
+    *head = mesclar(*head, secondHalf, criterio);
 }

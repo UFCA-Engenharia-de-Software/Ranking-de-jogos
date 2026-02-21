@@ -14,21 +14,25 @@
  * apenas os dados (Jogador) são trocados,
  * não os ponteiros da lista.
  */
-void ordenacaoPorSelecaoListaDuplamenteEncadeada(DoublyNode **cabeca)
+void ordenacaoPorSelecaoListaDuplamenteEncadeada(NoDuplo **cabeca,
+                                                 CriterioOrdenacao criterio)
 {
+    if (cabeca == NULL)
+        return;
+
     if (*cabeca == NULL || (*cabeca)->next == NULL)
         return;
 
-    for (DoublyNode *atual = *cabeca; atual != NULL; atual = atual->next)
+    for (NoDuplo *atual = *cabeca; atual != NULL; atual = atual->next)
     {
-        DoublyNode *maior = atual;
+        NoDuplo *maior = atual;
 
         /* Busca o maior elemento restante */
-        for (DoublyNode *varredura = atual->next;
+        for (NoDuplo *varredura = atual->next;
              varredura != NULL;
              varredura = varredura->next)
         {
-            if (varredura->data.pontuacao > maior->data.pontuacao)
+            if (comparar(varredura->data, maior->data, criterio))
             {
                 maior = varredura;
             }

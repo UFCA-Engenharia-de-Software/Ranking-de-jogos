@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "../../lista_encadeada_dinamica.h"
 #include "quick_sort_lista_dupla.h"
 
 /* Cria um jogador com os dados fornecidos */
@@ -13,35 +14,8 @@ static Jogador criarJogador(const char *nick, int pontos, int nivel, float tempo
     return j;
 }
 
-/* Funções auxiliares de lista (apenas para o teste) */
-static void inserir(DoublyNode **head, Jogador j) {
-    DoublyNode *novo = (DoublyNode*) malloc(sizeof(DoublyNode));
-    novo->data = j;
-    novo->next = *head;
-    novo->prev = NULL;
-    if (*head) (*head)->prev = novo;
-    *head = novo;
-}
-
-static void imprimir(DoublyNode *head) {
-    for (DoublyNode *p = head; p != NULL; p = p->next) {
-        printf("%s - %d pontos, nível %d, tempo %.1f\n",
-               p->data.nickname, p->data.pontuacao, p->data.nivel, p->data.tempo_jogado);
-    }
-}
-
-static void liberar(DoublyNode **head) {
-    DoublyNode *p = *head;
-    while (p) {
-        DoublyNode *tmp = p;
-        p = p->next;
-        free(tmp);
-    }
-    *head = NULL;
-}
-
 int main(void) {
-    DoublyNode *lista = NULL;
+    NoDuplo *lista = NULL;
 
     /* ---- Teste 1: lista com vários elementos ---- */
     printf("=== Teste 1: lista com 6 jogadores ===\n");
@@ -53,48 +27,48 @@ int main(void) {
     inserir(&lista, criarJogador("Frank",    50,  1,  2.0));
 
     printf("Antes da ordenação:\n");
-    imprimir(lista);
+    imprimir(&lista);
 
-    quickSortDoublyLinkedList(&lista);
+    quickSortDoublyLinkedList(&lista, ORDENAR_PONTUACAO);
 
     printf("Depois da ordenação (pontuação decrescente):\n");
-    imprimir(lista);
+    imprimir(&lista);
 
-    liberar(&lista);
+    liberar_lista(&lista);
 
     /* ---- Teste 2: lista vazia ---- */
     printf("\n=== Teste 2: lista vazia ===\n");
-    DoublyNode *vazia = NULL;
-    quickSortDoublyLinkedList(&vazia);
-    imprimir(vazia);
+    NoDuplo *vazia = NULL;
+    quickSortDoublyLinkedList(&vazia, ORDENAR_PONTUACAO);
+    imprimir(&vazia);
 
     /* ---- Teste 3: lista com 1 elemento ---- */
     printf("\n=== Teste 3: lista com 1 elemento ===\n");
-    DoublyNode *unico = NULL;
+    NoDuplo *unico = NULL;
     inserir(&unico, criarJogador("Solo", 999, 99, 100.0));
-    quickSortDoublyLinkedList(&unico);
-    imprimir(unico);
-    liberar(&unico);
+    quickSortDoublyLinkedList(&unico, ORDENAR_PONTUACAO);
+    imprimir(&unico);
+    liberar_lista(&unico);
 
     /* ---- Teste 4: lista já ordenada ---- */
     printf("\n=== Teste 4: lista já ordenada ===\n");
-    DoublyNode *ordenada = NULL;
+    NoDuplo *ordenada = NULL;
     inserir(&ordenada, criarJogador("C", 300, 3, 3.0));
     inserir(&ordenada, criarJogador("B", 400, 4, 4.0));
     inserir(&ordenada, criarJogador("A", 500, 5, 5.0));
-    quickSortDoublyLinkedList(&ordenada);
-    imprimir(ordenada);
-    liberar(&ordenada);
+    quickSortDoublyLinkedList(&ordenada, ORDENAR_PONTUACAO);
+    imprimir(&ordenada);
+    liberar_lista(&ordenada);
 
     /* ---- Teste 5: lista em ordem inversa ---- */
     printf("\n=== Teste 5: lista em ordem inversa ===\n");
-    DoublyNode *inversa = NULL;
+    NoDuplo *inversa = NULL;
     inserir(&inversa, criarJogador("X", 100, 1, 1.0));
     inserir(&inversa, criarJogador("Y", 200, 2, 2.0));
     inserir(&inversa, criarJogador("Z", 300, 3, 3.0));
-    quickSortDoublyLinkedList(&inversa);
-    imprimir(inversa);
-    liberar(&inversa);
+    quickSortDoublyLinkedList(&inversa, ORDENAR_PONTUACAO);
+    imprimir(&inversa);
+    liberar_lista(&inversa);
 
     printf("\nTodos os testes do Quick Sort dinâmico finalizados.\n");
     return 0;

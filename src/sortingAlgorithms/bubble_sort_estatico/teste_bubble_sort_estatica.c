@@ -41,7 +41,7 @@ int main() {
     imprimir(&minha_lista);
 
     // Chamando o algoritmo da Task 10
-    bubbleSortEstatica(&minha_lista);
+    bubbleSortEstatica(&minha_lista, ORDENAR_PONTUACAO);
 
     printf("\n--- LISTA APOS BUBBLE SORT (Maior para o Menor) ---\n");
     imprimir(&minha_lista);

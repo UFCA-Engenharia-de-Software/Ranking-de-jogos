@@ -31,7 +31,7 @@ int main(void)
     printf("Antes da ordenação:\n");
     imprimir(&lista);
 
-    mergeSortListaDupla(&lista);
+    mergeSortListaDupla(&lista, ORDENAR_PONTUACAO);
 
     printf("Depois da ordenação (pontuação decrescente):\n");
     imprimir(&lista);
@@ -61,7 +61,7 @@ int main(void)
     /* ---- Teste 2: lista vazia ---- */
     printf("\n=== Teste 2: lista vazia ===\n");
     NoDuplo *vazia = NULL;
-    mergeSortListaDupla(&vazia);
+    mergeSortListaDupla(&vazia, ORDENAR_PONTUACAO);
     printf("Lista vazia após ordenação: ");
     imprimir(&vazia);
 
@@ -69,7 +69,7 @@ int main(void)
     printf("=== Teste 3: lista com 1 elemento ===\n");
     NoDuplo *unico = NULL;
     inserir(&unico, criarJogador("Solo", 999, 99, 100.0));
-    mergeSortListaDupla(&unico);
+    mergeSortListaDupla(&unico, ORDENAR_PONTUACAO);
     printf("Lista com 1 elemento após ordenação:\n");
     imprimir(&unico);
     liberar_lista(&unico);
@@ -79,7 +79,7 @@ int main(void)
     NoDuplo *dupla = NULL;
     inserir(&dupla, criarJogador("Menor", 10, 1, 1.0));
     inserir(&dupla, criarJogador("Maior", 90, 9, 9.0));
-    mergeSortListaDupla(&dupla);
+    mergeSortListaDupla(&dupla, ORDENAR_PONTUACAO);
     printf("Lista com 2 elementos após ordenação:\n");
     imprimir(&dupla);
     liberar_lista(&dupla);
@@ -90,7 +90,7 @@ int main(void)
     inserir(&ordenada, criarJogador("A", 500, 5, 5.0));
     inserir(&ordenada, criarJogador("B", 400, 4, 4.0));
     inserir(&ordenada, criarJogador("C", 300, 3, 3.0));
-    mergeSortListaDupla(&ordenada);
+    mergeSortListaDupla(&ordenada, ORDENAR_PONTUACAO);
     printf("Lista já ordenada após merge sort:\n");
     imprimir(&ordenada);
     liberar_lista(&ordenada);
@@ -101,7 +101,7 @@ int main(void)
     inserir(&inversa, criarJogador("X", 100, 1, 1.0));
     inserir(&inversa, criarJogador("Y", 200, 2, 2.0));
     inserir(&inversa, criarJogador("Z", 300, 3, 3.0));
-    mergeSortListaDupla(&inversa);
+    mergeSortListaDupla(&inversa, ORDENAR_PONTUACAO);
     printf("Lista inversa após merge sort:\n");
     imprimir(&inversa);
     liberar_lista(&inversa);
