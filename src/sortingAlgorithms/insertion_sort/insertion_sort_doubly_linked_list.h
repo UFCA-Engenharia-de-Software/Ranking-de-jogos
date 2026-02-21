@@ -2,7 +2,7 @@
 Arquivo: insertion_sort_doubly_linked_list.h
 Descrição:
 Declara a função de Insertion Sort para lista
-duplamente encadeada dinâmica (DoublyNode).
+duplamente encadeada dinâmica (NoDuplo).
 Ordenação decrescente por pontuação.
 */
 
@@ -12,6 +12,6 @@ Ordenação decrescente por pontuação.
 #include "../../lista_encadeada_dinamica.h"
 
 /* Ordena a lista por pontuação (decrescente). */
-void insertionSortDoublyLinkedList(DoublyNode **head);
+void insertionSortListaDupla(NoDuplo **head);
 
 #endif

@@ -17,29 +17,29 @@ static Jogador criarJogador(const char *nick, int pontos, int nivel, float tempo
 
 int main(void)
 {
-    DoublyNode *lista = NULL;
+    NoDuplo *lista = NULL;
 
     /* ---- Teste 1: lista com vários elementos ---- */
     printf("=== Teste 1: lista com 6 jogadores ===\n");
-    insert(&lista, criarJogador("Alice",   300,  5, 12.5));
-    insert(&lista, criarJogador("Bob",     150,  3,  8.0));
-    insert(&lista, criarJogador("Carlos",  500, 10, 25.0));
-    insert(&lista, criarJogador("Diana",   200,  4, 10.0));
-    insert(&lista, criarJogador("Eve",     500,  8, 20.0));
-    insert(&lista, criarJogador("Frank",    50,  1,  2.0));
+    inserir(&lista, criarJogador("Alice", 300, 5, 12.5));
+    inserir(&lista, criarJogador("Bob", 150, 3, 8.0));
+    inserir(&lista, criarJogador("Carlos", 500, 10, 25.0));
+    inserir(&lista, criarJogador("Diana", 200, 4, 10.0));
+    inserir(&lista, criarJogador("Eve", 500, 8, 20.0));
+    inserir(&lista, criarJogador("Frank", 50, 1, 2.0));
 
     printf("Antes da ordenação:\n");
-    print(&lista);
+    imprimir(&lista);
 
-    mergeSortDoublyLinkedList(&lista);
+    mergeSortListaDupla(&lista);
 
     printf("Depois da ordenação (pontuação decrescente):\n");
-    print(&lista);
+    imprimir(&lista);
 
     /* Verifica se os ponteiros prev estão corretos */
     printf("Verificando ponteiros prev... ");
     int ok = 1;
-    for (DoublyNode *p = lista; p != NULL && p->next != NULL; p = p->next)
+    for (NoDuplo *p = lista; p != NULL && p->next != NULL; p = p->next)
     {
         if (p->next->prev != p)
         {
@@ -56,55 +56,55 @@ int main(void)
     if (ok)
         printf("OK!\n");
 
-    free_list(&lista);
+    liberar_lista(&lista);
 
     /* ---- Teste 2: lista vazia ---- */
     printf("\n=== Teste 2: lista vazia ===\n");
-    DoublyNode *vazia = NULL;
-    mergeSortDoublyLinkedList(&vazia);
+    NoDuplo *vazia = NULL;
+    mergeSortListaDupla(&vazia);
     printf("Lista vazia após ordenação: ");
-    print(&vazia);
+    imprimir(&vazia);
 
     /* ---- Teste 3: lista com 1 elemento ---- */
     printf("=== Teste 3: lista com 1 elemento ===\n");
-    DoublyNode *unico = NULL;
-    insert(&unico, criarJogador("Solo", 999, 99, 100.0));
-    mergeSortDoublyLinkedList(&unico);
+    NoDuplo *unico = NULL;
+    inserir(&unico, criarJogador("Solo", 999, 99, 100.0));
+    mergeSortListaDupla(&unico);
     printf("Lista com 1 elemento após ordenação:\n");
-    print(&unico);
-    free_list(&unico);
+    imprimir(&unico);
+    liberar_lista(&unico);
 
     /* ---- Teste 4: lista com 2 elementos ---- */
     printf("=== Teste 4: lista com 2 elementos ===\n");
-    DoublyNode *dupla = NULL;
-    insert(&dupla, criarJogador("Menor", 10, 1, 1.0));
-    insert(&dupla, criarJogador("Maior", 90, 9, 9.0));
-    mergeSortDoublyLinkedList(&dupla);
+    NoDuplo *dupla = NULL;
+    inserir(&dupla, criarJogador("Menor", 10, 1, 1.0));
+    inserir(&dupla, criarJogador("Maior", 90, 9, 9.0));
+    mergeSortListaDupla(&dupla);
     printf("Lista com 2 elementos após ordenação:\n");
-    print(&dupla);
-    free_list(&dupla);
+    imprimir(&dupla);
+    liberar_lista(&dupla);
 
     /* ---- Teste 5: lista já ordenada ---- */
     printf("=== Teste 5: lista já ordenada ===\n");
-    DoublyNode *ordenada = NULL;
-    insert(&ordenada, criarJogador("A", 500, 5, 5.0));
-    insert(&ordenada, criarJogador("B", 400, 4, 4.0));
-    insert(&ordenada, criarJogador("C", 300, 3, 3.0));
-    mergeSortDoublyLinkedList(&ordenada);
+    NoDuplo *ordenada = NULL;
+    inserir(&ordenada, criarJogador("A", 500, 5, 5.0));
+    inserir(&ordenada, criarJogador("B", 400, 4, 4.0));
+    inserir(&ordenada, criarJogador("C", 300, 3, 3.0));
+    mergeSortListaDupla(&ordenada);
     printf("Lista já ordenada após merge sort:\n");
-    print(&ordenada);
-    free_list(&ordenada);
+    imprimir(&ordenada);
+    liberar_lista(&ordenada);
 
     /* ---- Teste 6: lista em ordem inversa ---- */
     printf("=== Teste 6: lista em ordem inversa ===\n");
-    DoublyNode *inversa = NULL;
-    insert(&inversa, criarJogador("X", 100, 1, 1.0));
-    insert(&inversa, criarJogador("Y", 200, 2, 2.0));
-    insert(&inversa, criarJogador("Z", 300, 3, 3.0));
-    mergeSortDoublyLinkedList(&inversa);
+    NoDuplo *inversa = NULL;
+    inserir(&inversa, criarJogador("X", 100, 1, 1.0));
+    inserir(&inversa, criarJogador("Y", 200, 2, 2.0));
+    inserir(&inversa, criarJogador("Z", 300, 3, 3.0));
+    mergeSortListaDupla(&inversa);
     printf("Lista inversa após merge sort:\n");
-    print(&inversa);
-    free_list(&inversa);
+    imprimir(&inversa);
+    liberar_lista(&inversa);
 
     printf("Todos os testes finalizados.\n");
     return 0;

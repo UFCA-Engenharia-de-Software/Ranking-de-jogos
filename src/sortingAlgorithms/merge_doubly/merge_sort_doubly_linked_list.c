@@ -8,7 +8,7 @@
  * Abordagem recursiva: a cada chamada, escolhe o nó com maior
  * pontuação e o coloca na frente da lista resultante.
  */
-static DoublyNode *merge(DoublyNode *left, DoublyNode *right)
+static NoDuplo *mesclar(NoDuplo *left, NoDuplo *right)
 {
     if (left == NULL)
         return right;
@@ -17,7 +17,7 @@ static DoublyNode *merge(DoublyNode *left, DoublyNode *right)
 
     if (left->data.pontuacao >= right->data.pontuacao)
     {
-        left->next = merge(left->next, right);
+        left->next = mesclar(left->next, right);
         if (left->next)
             left->next->prev = left;
         left->prev = NULL;
@@ -25,7 +25,7 @@ static DoublyNode *merge(DoublyNode *left, DoublyNode *right)
     }
     else
     {
-        right->next = merge(left, right->next);
+        right->next = mesclar(left, right->next);
         if (right->next)
             right->next->prev = right;
         right->prev = NULL;
@@ -38,27 +38,27 @@ static DoublyNode *merge(DoublyNode *left, DoublyNode *right)
  *   SE (lista tem 0 ou 1 elemento):
  *       RETORNA (já está "ordenada")
  *
- *   1. Encontre o nó do meio usando getMiddler()
+ *   1. Encontre o nó do meio usando obterMeio()
  *   2. Divida a lista em duas metades
  *   3. Chame mergeSort() recursivamente nas duas metades
- *   4. Chame merge() para mesclar as duas metades ordenadas
+ *   4. Chame mesclar() para mesclar as duas metades ordenadas
  */
-void mergeSortDoublyLinkedList(DoublyNode **head)
+void mergeSortListaDupla(NoDuplo **head)
 {
     if (*head == NULL || (*head)->next == NULL)
     {
         return;
     }
 
-    DoublyNode *middle = getMiddler(head);
-    DoublyNode *secondHalf = middle->next;
+    NoDuplo *middle = obterMeio(head);
+    NoDuplo *secondHalf = middle->next;
 
     middle->next = NULL;
     if (secondHalf != NULL)
         secondHalf->prev = NULL;
 
-    mergeSortDoublyLinkedList(head);
-    mergeSortDoublyLinkedList(&secondHalf);
+    mergeSortListaDupla(head);
+    mergeSortListaDupla(&secondHalf);
 
-    *head = merge(*head, secondHalf);
+    *head = mesclar(*head, secondHalf);
 }

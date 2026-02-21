@@ -16,21 +16,21 @@ static Jogador criarJogador(const char *nick, int pontos, int nivel, float tempo
 
 int main(void)
 {
-    DoublyNode *lista = NULL;
+    NoDuplo *lista = NULL;
 
-    insert(&lista, criarJogador("Alice", 300, 5, 12.5));
-    insert(&lista, criarJogador("Bob", 150, 3, 8.0));
-    insert(&lista, criarJogador("Carlos", 500, 10, 25.0));
-    insert(&lista, criarJogador("Diana", 200, 4, 10.0));
+    inserir(&lista, criarJogador("Alice", 300, 5, 12.5));
+    inserir(&lista, criarJogador("Bob", 150, 3, 8.0));
+    inserir(&lista, criarJogador("Carlos", 500, 10, 25.0));
+    inserir(&lista, criarJogador("Diana", 200, 4, 10.0));
 
     printf("Antes:\n");
-    print(&lista);
+    imprimir(&lista);
 
-    insertionSortDoublyLinkedList(&lista);
+    insertionSortListaDupla(&lista);
 
     printf("\nDepois (Insertion Sort):\n");
-    print(&lista);
+    imprimir(&lista);
 
-    free_list(&lista);
+    liberar_lista(&lista);
     return 0;
 }

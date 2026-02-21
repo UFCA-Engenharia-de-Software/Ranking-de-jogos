@@ -4,17 +4,17 @@
  * Insertion Sort para lista duplamente encadeada.
  * Ordenação decrescente por pontuação.
  */
-void insertionSortDoublyLinkedList(DoublyNode **head)
+void insertionSortListaDupla(NoDuplo **head)
 {
     if (*head == NULL || (*head)->next == NULL)
         return;
 
-    DoublyNode *sorted = NULL;
-    DoublyNode *current = *head;
+    NoDuplo *sorted = NULL;
+    NoDuplo *current = *head;
 
     while (current != NULL)
     {
-        DoublyNode *next = current->next;
+        NoDuplo *next = current->next;
 
         current->prev = current->next = NULL;
 
@@ -28,7 +28,7 @@ void insertionSortDoublyLinkedList(DoublyNode **head)
         }
         else
         {
-            DoublyNode *temp = sorted;
+            NoDuplo *temp = sorted;
 
             while (temp->next != NULL &&
                    temp->next->data.pontuacao > current->data.pontuacao)
