@@ -7,4 +7,6 @@ Sort.
 
 Os algoritmos permitem a ordenação dos jogadores segundo diferentes
 critérios, como pontuação, nível e tempo jogado.
+
+=======
 */

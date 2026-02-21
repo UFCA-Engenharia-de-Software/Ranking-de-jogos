@@ -1,0 +1,18 @@
+[33m39cf719[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mquick_sort[m[33m, [m[1;31morigin/quick_sort[m[33m)[m Quick Sort
+[33m971912e[m quick sort
+[33mfc57603[m Merge branch 'main' of https://github.com/UFCA-Engenharia-de-Software/Ranking-de-jogos
+[33ma534938[m feat: implement `merge sort` to `doubly linked lists`
+[33m81ef842[m feat: implement `DoublyNode` struct and operations
+[33m1f864f0[m[33m ([m[1;32mtask8-task13[m[33m, [m[1;32mminha-task[m[33m)[m refactor: ajusta estrutura da lista encadeada estática
+[33m80f3bb1[m chore: remove include duplicado do header de ordenacoes
+[33m15c2fb4[m refactor: altera definicao da lista dinamica para padronizacao do header
+[33m26186f5[m feat: adiciona estrutura de lista encadeada estatica para armazenamento em vetor
+[33m8147bd0[m feat: adiciona insertion sort estatico para lista encadeada estatica
+[33m852852b[m Merge pull request #3 from UFCA-Engenharia-de-Software/lordenation
+[33m4af22a8[m release: add merge sort in statics lists
+[33m258de1f[m feat: adiciona struct Jogador para armazenamento de dados do ranking
+[33m4b8edeb[m feat: adiciona struct No e struct ListaD para implementação da lista duplamente encadeada
+[33m6fb7353[m Merge pull request #1 from UFCA-Engenharia-de-Software/lordenation
+[33md6544ca[m release: add merge sorte and insction sort in dinamic lists double-linked
+[33m8aedc77[m docs: adiciona docstrings nos arquivos do projeto
+[33m5992ac2[m Initial commit
