@@ -1,5 +1,5 @@
-#ifndef QUICK_SORT_DOUBLY_LINKED_LIST_H
-#define QUICK_SORT_DOUBLY_LINKED_LIST_H
+#ifndef QUICK_SORT_LISTA_DUPLA_H
+#define QUICK_SORT_LISTA_DUPLA_H
 
 #include "jogador.h"
 

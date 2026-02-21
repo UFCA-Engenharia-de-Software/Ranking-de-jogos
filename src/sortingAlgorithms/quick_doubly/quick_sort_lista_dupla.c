@@ -1,10 +1,7 @@
 #include <stdlib.h>
-#include "quick_sort_doubly_linked_list.h"
+#include "quick_sort_lista_dupla.h"
 
-/*
- * Particiona a lista duplamente encadeada em torno de um pivô.
- * Retorna o nó do pivô após a partição.
- */
+/* Particiona a lista duplamente encadeada em torno de um pivô */
 static DoublyNode* partition(DoublyNode *low, DoublyNode *high) {
     int pivot = high->data.pontuacao;
     DoublyNode *i = low->prev;
@@ -24,9 +21,7 @@ static DoublyNode* partition(DoublyNode *low, DoublyNode *high) {
     return i;
 }
 
-/*
- * Função recursiva para aplicar Quick Sort na lista duplamente encadeada.
- */
+/* Função recursiva do Quick Sort */
 static void _quickSort(DoublyNode *low, DoublyNode *high) {
     if (high != NULL && low != high && low != high->next) {
         DoublyNode *p = partition(low, high);
@@ -35,9 +30,7 @@ static void _quickSort(DoublyNode *low, DoublyNode *high) {
     }
 }
 
-/*
- * Função principal chamada pelo usuário.
- */
+/* Interface pública */
 void quickSortDoublyLinkedList(DoublyNode **head) {
     if (*head == NULL) return;
 
