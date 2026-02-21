@@ -29,8 +29,9 @@ typedef struct {
 } Lista;
 
 // Declarando as funções
-void initLista(Lista *lista);
-int insert(Lista *lista, Jogador jogador);
-void print(Lista *lista);
-
+void iniciarLista(Lista *lista);
+int inserir(Lista *lista, Jogador jogador);
+void imprimir(Lista *lista);
+int busca (Lista *lista, const char *nickname);
+void deletar(Lista *lista, int indice_alvo);
 #endif
