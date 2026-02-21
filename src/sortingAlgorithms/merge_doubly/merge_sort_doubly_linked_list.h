@@ -2,7 +2,7 @@
 Arquivo: merge_sort_doubly_linked_list.h
 Descrição:
 Declara a função de Merge Sort para lista duplamente encadeada
-dinâmica (DoublyNode). A ordenação é feita de forma decrescente
+dinâmica (NoDuplo). A ordenação é feita de forma decrescente
 pela pontuação do jogador.
 */
 
@@ -12,6 +12,6 @@ pela pontuação do jogador.
 #include "../../lista_encadeada_dinamica.h"
 
 /* Ordena a lista duplamente encadeada por pontuação (decrescente). */
-void mergeSortDoublyLinkedList(DoublyNode **head);
+void mergeSortListaDupla(NoDuplo **head);
 
 #endif /* MERGE_SORT_DOUBLY_LINKED_LIST_H */

@@ -7,45 +7,6 @@ Sort.
 
 Os algoritmos permitem a ordenação dos jogadores segundo diferentes
 critérios, como pontuação, nível e tempo jogado.
+
+=======
 */
-
-#ifndef ORDENACOES_H
-#define ORDENACOES_H
-
-/* Forward declaration do nó da lista dinâmica */
-typedef struct No No;
-
-#include "lista_encadeada_estatica.h"
-
-/* Critérios de ordenação */
-typedef enum {
-    ORDENAR_PONTUACAO = 1,
-    ORDENAR_NIVEL,
-    ORDENAR_TEMPO,
-    ORDENAR_COMBINADO
-} CriterioOrdenacao;
-
-/* Algoritmos de ordenação dinâmicos */
-
-/* Insertion Sort*/
-void insertion_sort_dinamico(No **head, CriterioOrdenacao criterio);
-
-/* Merge Sort*/
-void merge_sort(No **head, CriterioOrdenacao criterio);
-
-/* Algoritmos de ordenação estáticos */
-
-/* Merge Sort – lista estática */
-void merge_sort_estatico(Jogador v[], int tamanho,
-                         CriterioOrdenacao criterio);
-
-void insertion_sort_estatico(Lista *lista);
-
-/* Quick Sort – lista dinâmica */
-void quick_sort_dinamico(No **head, CriterioOrdenacao criterio);
-
-/* Quick Sort – lista estática */
-void quick_sort_estatico(Jogador v[], int tamanho, CriterioOrdenacao criterio);
-
-
-#endif

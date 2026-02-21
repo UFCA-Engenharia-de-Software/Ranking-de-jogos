@@ -28,4 +28,22 @@ typedef struct {
     int livre;
 } Lista;
 
+/* === Declaração das funções === */
+
+/* Inicializa a lista estática */
+void iniciarLista(Lista *lista);
+
+/* Insere um jogador na lista.
+   Retorna o índice onde foi inserido ou INVALIDO se falhar */
+int inserir(Lista *lista, Jogador jogador);
+
+/* Imprime todos os jogadores da lista */
+void imprimir(Lista *lista);
+
+/* Busca um jogador pelo nickname.
+   Retorna o índice ou INVALIDO se não encontrar */
+int busca(Lista *lista, const char *nickname);
+
+/* Remove o nó correspondente ao índice informado */
+void deletar(Lista *lista, int indice_alvo);
 #endif

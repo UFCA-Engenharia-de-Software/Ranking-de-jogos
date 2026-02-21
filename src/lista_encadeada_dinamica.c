@@ -11,9 +11,9 @@ estruturas do tipo Jogador.
 #include <string.h>
 #include "lista_encadeada_dinamica.h"
 
-void insert(DoublyNode **head, Jogador jogador)
+void inserir(NoDuplo **head, Jogador jogador)
 {
-    DoublyNode *new = malloc(sizeof(DoublyNode));
+    NoDuplo *new = malloc(sizeof(NoDuplo));
     if (new == NULL)
     {
         printf("Erro ao alocar memória.\n");
@@ -30,7 +30,7 @@ void insert(DoublyNode **head, Jogador jogador)
         return;
     }
 
-    for (DoublyNode *ptr = *head; ptr != NULL; ptr = ptr->next)
+    for (NoDuplo *ptr = *head; ptr != NULL; ptr = ptr->next)
     {
         if (ptr->next == NULL)
         {
@@ -41,9 +41,9 @@ void insert(DoublyNode **head, Jogador jogador)
     }
 }
 
-DoublyNode *init(int length)
+NoDuplo *inicializar(int length)
 {
-    DoublyNode *head = NULL;
+    NoDuplo *head = NULL;
     if (length == 0)
     {
         return head;
@@ -61,20 +61,20 @@ DoublyNode *init(int length)
         printf("Tempo jogado: ");
         scanf("%f", &jogador.tempo_jogado);
 
-        insert(&head, jogador);
+        inserir(&head, jogador);
     }
     return head;
 }
 
-void delete(DoublyNode **head, int idx)
+void remover(NoDuplo **head, int idx)
 {
     int count = 0;
-    for (DoublyNode *ptr = *head; ptr != NULL; ptr = ptr->next)
+    for (NoDuplo *ptr = *head; ptr != NULL; ptr = ptr->next)
     {
         if (count == idx)
         {
-            DoublyNode *prev = ptr->prev;
-            DoublyNode *next = ptr->next;
+            NoDuplo *prev = ptr->prev;
+            NoDuplo *next = ptr->next;
 
             if (prev != NULL)
                 prev->next = next;
@@ -92,9 +92,9 @@ void delete(DoublyNode **head, int idx)
     printf("Índice %d não encontrado.\n", idx);
 }
 
-DoublyNode *search(DoublyNode **head, const char *nickname)
+NoDuplo *buscar(NoDuplo **head, const char *nickname)
 {
-    for (DoublyNode *ptr = *head; ptr != NULL; ptr = ptr->next)
+    for (NoDuplo *ptr = *head; ptr != NULL; ptr = ptr->next)
     {
         if (strcmp(ptr->data.nickname, nickname) == 0)
             return ptr;
@@ -102,9 +102,9 @@ DoublyNode *search(DoublyNode **head, const char *nickname)
     return NULL;
 }
 
-void print(DoublyNode **head)
+void imprimir(NoDuplo **head)
 {
-    for (DoublyNode *ptr = *head; ptr != NULL; ptr = ptr->next)
+    for (NoDuplo *ptr = *head; ptr != NULL; ptr = ptr->next)
     {
         printf("Nickname: %s | Pontuação: %d | Nível: %d | Tempo jogado: %.2f\n",
                ptr->data.nickname, ptr->data.pontuacao,
@@ -113,23 +113,23 @@ void print(DoublyNode **head)
     printf("\n");
 }
 
-void free_list(DoublyNode **head)
+void liberar_lista(NoDuplo **head)
 {
-    DoublyNode *ptr = *head;
+    NoDuplo *ptr = *head;
     while (ptr != NULL)
     {
-        DoublyNode *next = ptr->next;
+        NoDuplo *next = ptr->next;
         free(ptr);
         ptr = next;
     }
     *head = NULL;
 }
 
-DoublyNode *getMiddler(DoublyNode **head)
+NoDuplo *obterMeio(NoDuplo **head)
 {
-    DoublyNode *slow = *head;
+    NoDuplo *slow = *head;
 
-    for (DoublyNode *fast = (*head)->next;
+    for (NoDuplo *fast = (*head)->next;
          fast != NULL && fast->next != NULL;
          fast = (fast->next)->next)
     {
@@ -138,11 +138,11 @@ DoublyNode *getMiddler(DoublyNode **head)
     return slow;
 }
 
-int DoublyLinkedListLength(DoublyNode **head)
+int tamanhoListaDupla(NoDuplo **head)
 {
     int count = 0;
 
-    DoublyNode *ptr = *head;
+    NoDuplo *ptr = *head;
     while (ptr != NULL)
     {
         count++;
