@@ -1,8 +1,8 @@
-#include "bubble_sort_doubly.h"
+#include "bubble_sort_dinamico.h"
 #include <stddef.h>
 
-void bubble_sort_dinamico(DoublyNode **head, CriterioOrdenacao criterio) {
-    if (head == NULL || *head == NULL || (*head)->next == NULL) {
+void bubble_sort_dinamico(DoublyNode **inicio, CriterioOrdenacao criterio) {
+    if (inicio == NULL || *inicio == NULL || (*inicio)->next == NULL) {
         return;
     }
 
@@ -12,14 +12,14 @@ void bubble_sort_dinamico(DoublyNode **head, CriterioOrdenacao criterio) {
 
     do {
         trocou = 0;
-        atual = *head;
+        atual = *inicio;
 
         while (atual->next != ultimo) {
             
             if (comparar(atual->next->data, atual->data, criterio)) {
-                Jogador temp = atual->data;
+                Jogador temporario = atual->data;
                 atual->data = atual->next->data;
-                atual->next->data = temp;
+                atual->next->data = temporario;
                 trocou = 1;
             }
             atual = atual->next;
