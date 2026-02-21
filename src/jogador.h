@@ -8,6 +8,9 @@ como nickname, pontuação, nível e tempo jogado.
 
 Também contém a declaração das funções relacionadas ao jogador.
 */
+#ifndef JOGADOR_H
+#define JOGADOR_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,3 +21,4 @@ typedef struct Jogador{
     float tempo_jogado;
 }Jogador;
 
+#endif
