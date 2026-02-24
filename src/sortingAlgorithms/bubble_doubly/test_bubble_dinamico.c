@@ -1,36 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 #include "../../lista_encadeada_dinamica.h"
 #include "../sorting_utils.h"
 #include "bubble_sort_dinamico.h"
 
-int main() {
-
+int main()
+{
+#ifdef _WIN32
     SetConsoleOutputCP(65001);
-    DoublyNode *inicio = NULL;
+#endif
+    NoDuplo *inicio = NULL;
 
     // Criando jogadores com dados desordenados para garantir cenários abrangentes.
     Jogador j1 = {"Alice", 1500, 10, 50.5};
     Jogador j2 = {"Bob", 2000, 12, 60.0};
-    Jogador j3 = {"Charlie", 1500, 15, 45.0}; 
+    Jogador j3 = {"Charlie", 1500, 15, 45.0};
     Jogador j4 = {"Diana", 3000, 20, 100.0};
     Jogador j5 = {"Evan", 800, 5, 20.0};
-    Jogador j6 = {"Fiona", 1500, 15, 30.0}; 
+    Jogador j6 = {"Fiona", 1500, 15, 30.0};
 
-    insert(&inicio, j1);
-    insert(&inicio, j2);
-    insert(&inicio, j3);
-    insert(&inicio, j4);
-    insert(&inicio, j5);
-    insert(&inicio, j6);
+    inserir(&inicio, j1);
+    inserir(&inicio, j2);
+    inserir(&inicio, j3);
+    inserir(&inicio, j4);
+    inserir(&inicio, j5);
+    inserir(&inicio, j6);
 
     printf("==================================================\n");
     printf("              ESTADO INICIAL DA LISTA             \n");
     printf("==================================================\n");
-    print(&inicio);
+    imprimir(&inicio);
 
     /* TESTE 1: Pontuação (Maior para o Menor) */
     printf("\n==================================================\n");
@@ -38,7 +42,7 @@ int main() {
     printf("==================================================\n");
     // Diana(3000) deve ser a primeira, Evan(800) o último.
     bubble_sort_dinamico(&inicio, ORDENAR_PONTUACAO);
-    print(&inicio);
+    imprimir(&inicio);
 
     /* TESTE 2: Nível (Maior para o Menor) */
     printf("\n==================================================\n");
@@ -46,7 +50,7 @@ int main() {
     printf("==================================================\n");
     // Diana(20) continua em primeiro, mas agora Charlie e Fiona(15) sobem.
     bubble_sort_dinamico(&inicio, ORDENAR_NIVEL);
-    print(&inicio);
+    imprimir(&inicio);
 
     /* TESTE 3: Tempo Jogado (Menor para o Maior) */
     printf("\n==================================================\n");
@@ -54,7 +58,7 @@ int main() {
     printf("==================================================\n");
     // Aqui a lógica inverte! Evan(20.0) e Fiona(30.0) devem ser os primeiros.
     bubble_sort_dinamico(&inicio, ORDENAR_TEMPO);
-    print(&inicio);
+    imprimir(&inicio);
 
     /* TESTE 4: Combinado (Pontos -> Nível -> Tempo) */
     printf("\n==================================================\n");
@@ -69,10 +73,10 @@ int main() {
        6. Evan (800 pts)
     */
     bubble_sort_dinamico(&inicio, ORDENAR_COMBINADO);
-    print(&inicio);
+    imprimir(&inicio);
 
     // Limpeza
-    free_list(&inicio);
+    liberar_lista(&inicio);
     printf("\nMemoria liberada com sucesso. Fim dos testes.\n");
 
     return 0;
