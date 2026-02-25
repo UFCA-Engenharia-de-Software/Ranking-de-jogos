@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
 
 #include "../../lista_encadeada_estatica.h"
 #include "../sorting_utils.h"
 #include "selection_sort_estatico.h"
 
 int main() {
-    SetConsoleOutputCP(65001);
     Lista minha_lista;
     
     iniciarLista(&minha_lista); 
