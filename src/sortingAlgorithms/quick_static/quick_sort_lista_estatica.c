@@ -11,10 +11,39 @@ static void swapJogadores(Lista *lista, int indiceA, int indiceB)
     lista->vetor[indiceB].jogador = temp;
 }
 
+/* Escolhe o índice mediano entre low, mid e high para reduzir pior caso em entradas já ordenadas. */
+static int escolherPivoMedianOfThree(Lista *lista, int indices[],
+                                     int low, int high,
+                                     CriterioOrdenacao criterio)
+{
+    int mid = low + (high - low) / 2;
+    Jogador a = lista->vetor[indices[low]].jogador;
+    Jogador b = lista->vetor[indices[mid]].jogador;
+    Jogador c = lista->vetor[indices[high]].jogador;
+
+    if (comparar(a, b, criterio))
+    {
+        if (comparar(b, c, criterio))
+            return mid;
+        if (comparar(a, c, criterio))
+            return high;
+        return low;
+    }
+
+    if (comparar(a, c, criterio))
+        return low;
+    if (comparar(b, c, criterio))
+        return high;
+    return mid;
+}
+
 /* Particiona os índices dos nós em torno de um pivô. */
 static int partition(Lista *lista, int indices[], int low, int high,
                      CriterioOrdenacao criterio)
 {
+    int pivoEscolhido = escolherPivoMedianOfThree(lista, indices, low, high, criterio);
+    swapJogadores(lista, indices[pivoEscolhido], indices[high]);
+
     Jogador pivot = lista->vetor[indices[high]].jogador;
     int i = low - 1;
 
