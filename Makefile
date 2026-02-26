@@ -3,6 +3,7 @@ CFLAGS := -std=c11 -Wall -Wextra -Isrc
 BUILD_DIR := build-tests
 
 .PHONY: test clean
+.PHONY: test clean bench plot plot-deps
 
 test: \
 	$(BUILD_DIR)/test_lista_estatica \
@@ -42,7 +43,7 @@ $(BUILD_DIR)/test_selection_static: $(BUILD_DIR)
 	$(CC) $(CFLAGS) src/sortingAlgorithms/selection_estatico/test_selection_estatico.c src/sortingAlgorithms/selection_estatico/selection_sort_estatico.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_estatica.c -o $@
 
 $(BUILD_DIR)/test_merge_static: $(BUILD_DIR)
-	$(CC) $(CFLAGS) "src/sortingAlgorithms/merge_estática/teste_merge_sort_lista_estatica.c" "src/sortingAlgorithms/merge_estática/merge_sort_lista_estatica.c" src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_estatica.c -o $@
+	$(CC) $(CFLAGS) src/sortingAlgorithms/merge_estatica/teste_merge_sort_lista_estatica.c src/sortingAlgorithms/merge_estatica/merge_sort_lista_estatica.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_estatica.c -o $@
 
 $(BUILD_DIR)/test_bubble_static: $(BUILD_DIR)
 	$(CC) $(CFLAGS) src/sortingAlgorithms/bubble_sort_estatico/teste_bubble_sort_estatica.c src/sortingAlgorithms/bubble_sort_estatico/bubble_sort_estatica.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_estatica.c -o $@
@@ -60,7 +61,19 @@ $(BUILD_DIR)/test_quick_doubly: $(BUILD_DIR)
 	$(CC) $(CFLAGS) src/sortingAlgorithms/quick_doubly/teste_quick_sort.c src/sortingAlgorithms/quick_doubly/quick_sort_lista_dupla.c src/sortingAlgorithms/sorting_utils.c src/lista_encadeada_dinamica.c -o $@
 
 $(BUILD_DIR)/test_gerador: $(BUILD_DIR)
-	$(CC) $(CFLAGS) src/utilitarios/teste_gerador.c src/utilitarios/gerador_jogadores.c src/lista_encadeada_estatica.c -o $@
+	$(CC) $(CFLAGS) src/utilitarios/teste_gerador.c src/utilitarios/gerador_jogadores.c src/lista_encadeada_estatica.c src/lista_encadeada_dinamica.c -o $@
+
+$(BUILD_DIR)/bench: $(BUILD_DIR)
+	$(CC) $(CFLAGS) src/graficos/mede_tempo.c src/lista_encadeada_estatica.c src/lista_encadeada_dinamica.c src/utilitarios/gerador_jogadores.c src/sortingAlgorithms/sorting_utils.c src/sortingAlgorithms/bubble_sort_estatico/bubble_sort_estatica.c src/sortingAlgorithms/bubble_doubly/bubble_sort_dinamico.c src/sortingAlgorithms/insertion_sort_estatico/insertion_sort_estatico.c src/sortingAlgorithms/insertion_sort_dinamico/insertion_sort_lista_dinamica.c src/sortingAlgorithms/merge_estatica/merge_sort_lista_estatica.c src/sortingAlgorithms/merge_doubly/merge_sort_doubly_linked_list.c src/sortingAlgorithms/quick_static/quick_sort_lista_estatica.c src/sortingAlgorithms/quick_doubly/quick_sort_lista_dupla.c src/sortingAlgorithms/selection_estatico/selection_sort_estatico.c src/sortingAlgorithms/selection_sort_duplamente_encadeada/selection_sort_lista_duplamente_encadeada.c -o $@
+
+bench: $(BUILD_DIR)/bench
+	./$(BUILD_DIR)/bench
+
+plot:
+	uv run python src/graficos/gerador_de_graficos/grafico_de_barras.py
+
+plot-deps:
+	uv sync
 
 clean:
 	rm -rf $(BUILD_DIR)
