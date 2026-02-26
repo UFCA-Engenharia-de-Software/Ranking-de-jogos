@@ -22,7 +22,7 @@ typedef struct NoDuplo
 } NoDuplo;
 
 /* Insere um jogador ao final da lista. */
-void inserir(NoDuplo **head, Jogador jogador);
+void inserirDinamica(NoDuplo **head, Jogador jogador);
 
 /* Inicializa a lista lendo 'length' jogadores da entrada padrão. */
 NoDuplo *inicializar(int length);
@@ -34,7 +34,7 @@ void remover(NoDuplo **head, int idx);
 NoDuplo *buscar(NoDuplo **head, const char *nickname);
 
 /* Imprime todos os jogadores da lista. */
-void imprimir(NoDuplo **head);
+void imprimirDinamica(NoDuplo **head);
 
 /* Libera toda a memória alocada pela lista. */
 void liberar_lista(NoDuplo **head);
