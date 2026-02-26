@@ -7,12 +7,10 @@
 void gerarJogadores(Lista *lista, int quantidade, int tipo_ordem) {
 
     iniciarLista(lista);
-
     srand(time(NULL));
 
     for (int i = 0; i < quantidade; i++) {
-        Jogador j;  
-        
+        Jogador j;
         sprintf(j.nickname, "Player_%d", i + 1);
         
         // Atributos aleatórios padrão
@@ -31,5 +29,33 @@ void gerarJogadores(Lista *lista, int quantidade, int tipo_ordem) {
         }
         
         inserir(lista, j);
+    }
+}
+
+void gerarJogadoresDinamica(NoDuplo **head, int quantidade, int tipo_ordem) {
+    *head = NULL;
+    srand(time(NULL));
+
+    for (int i = 0; i < quantidade; i++) {
+        Jogador novo_jogador;
+
+        sprintf(novo_jogador.nickname, "Player_%d", i + 1);
+        
+        // Atributos aleatórios padrão
+        novo_jogador.nivel = (rand() % 100) + 1;            
+        novo_jogador.tempo_jogado = (rand() % 5000) / 10.0; 
+
+        
+        if (tipo_ordem == ALEATORIA) {
+            novo_jogador.pontuacao = rand() % 100000; 
+            
+        } else if (tipo_ordem == ORDENADA) {
+            novo_jogador.pontuacao = i * 10; 
+            
+        } else if (tipo_ordem == INVERSAMENTE_ORDENADA) {
+            novo_jogador.pontuacao = (quantidade - i) * 10; 
+        }
+        
+        inserirDinamica(head, novo_jogador);
     }
 }

@@ -11,7 +11,7 @@ estruturas do tipo Jogador.
 #include <string.h>
 #include "lista_encadeada_dinamica.h"
 
-void inserir(NoDuplo **head, Jogador jogador)
+void inserirDinamica(NoDuplo **head, Jogador jogador)
 {
     NoDuplo *new = malloc(sizeof(NoDuplo));
     if (new == NULL)
@@ -61,7 +61,7 @@ NoDuplo *inicializar(int length)
         printf("Tempo jogado: ");
         scanf("%f", &jogador.tempo_jogado);
 
-        inserir(&head, jogador);
+        inserirDinamica(&head, jogador);
     }
     return head;
 }
@@ -102,7 +102,7 @@ NoDuplo *buscar(NoDuplo **head, const char *nickname)
     return NULL;
 }
 
-void imprimir(NoDuplo **head)
+void imprimirDinamica(NoDuplo **head)
 {
     for (NoDuplo *ptr = *head; ptr != NULL; ptr = ptr->next)
     {
