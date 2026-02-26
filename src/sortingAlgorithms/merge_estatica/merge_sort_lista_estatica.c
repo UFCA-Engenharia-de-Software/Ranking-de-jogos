@@ -31,22 +31,26 @@ static int mesclar(Lista *lista, int esquerda, int direita,
                  lista->vetor[direita].jogador,
                  criterio))
     {
+        int proximoMesclado = INVALIDO;
         int prox = lista->vetor[esquerda].proximo;
         lista->vetor[esquerda].proximo = mesclar(lista, prox, direita, criterio);
+        proximoMesclado = lista->vetor[esquerda].proximo;
 
-        if (lista->vetor[lista->vetor[esquerda].proximo].proximo != INVALIDO)
-            lista->vetor[lista->vetor[esquerda].proximo].anterior = esquerda;
+        if (proximoMesclado != INVALIDO)
+            lista->vetor[proximoMesclado].anterior = esquerda;
 
         lista->vetor[esquerda].anterior = INVALIDO;
         return esquerda;
     }
     else
     {
+        int proximoMesclado = INVALIDO;
         int prox = lista->vetor[direita].proximo;
         lista->vetor[direita].proximo = mesclar(lista, esquerda, prox, criterio);
+        proximoMesclado = lista->vetor[direita].proximo;
 
-        if (lista->vetor[lista->vetor[direita].proximo].proximo != INVALIDO)
-            lista->vetor[lista->vetor[direita].proximo].anterior = direita;
+        if (proximoMesclado != INVALIDO)
+            lista->vetor[proximoMesclado].anterior = direita;
 
         lista->vetor[direita].anterior = INVALIDO;
         return direita;
