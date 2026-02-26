@@ -21,20 +21,20 @@ int main(void)
 
     /* ---- Teste 1: lista com vários elementos ---- */
     printf("=== Teste 1: lista com 6 jogadores ===\n");
-    inserir(&lista, criarJogador("Alice", 300, 5, 12.5));
-    inserir(&lista, criarJogador("Bob", 150, 3, 8.0));
-    inserir(&lista, criarJogador("Carlos", 500, 10, 25.0));
-    inserir(&lista, criarJogador("Diana", 200, 4, 10.0));
-    inserir(&lista, criarJogador("Eve", 500, 8, 20.0));
-    inserir(&lista, criarJogador("Frank", 50, 1, 2.0));
+    inserirDinamica(&lista, criarJogador("Alice", 300, 5, 12.5));
+    inserirDinamica(&lista, criarJogador("Bob", 150, 3, 8.0));
+    inserirDinamica(&lista, criarJogador("Carlos", 500, 10, 25.0));
+    inserirDinamica(&lista, criarJogador("Diana", 200, 4, 10.0));
+    inserirDinamica(&lista, criarJogador("Eve", 500, 8, 20.0));
+    inserirDinamica(&lista, criarJogador("Frank", 50, 1, 2.0));
 
     printf("Antes da ordenação:\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     mergeSortListaDupla(&lista, ORDENAR_PONTUACAO);
 
     printf("Depois da ordenação (pontuação decrescente):\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     /* Verifica se os ponteiros prev estão corretos */
     printf("Verificando ponteiros prev... ");
@@ -63,47 +63,47 @@ int main(void)
     NoDuplo *vazia = NULL;
     mergeSortListaDupla(&vazia, ORDENAR_PONTUACAO);
     printf("Lista vazia após ordenação: ");
-    imprimir(&vazia);
+    imprimirDinamica(&vazia);
 
     /* ---- Teste 3: lista com 1 elemento ---- */
     printf("=== Teste 3: lista com 1 elemento ===\n");
     NoDuplo *unico = NULL;
-    inserir(&unico, criarJogador("Solo", 999, 99, 100.0));
+    inserirDinamica(&unico, criarJogador("Solo", 999, 99, 100.0));
     mergeSortListaDupla(&unico, ORDENAR_PONTUACAO);
     printf("Lista com 1 elemento após ordenação:\n");
-    imprimir(&unico);
+    imprimirDinamica(&unico);
     liberar_lista(&unico);
 
     /* ---- Teste 4: lista com 2 elementos ---- */
     printf("=== Teste 4: lista com 2 elementos ===\n");
     NoDuplo *dupla = NULL;
-    inserir(&dupla, criarJogador("Menor", 10, 1, 1.0));
-    inserir(&dupla, criarJogador("Maior", 90, 9, 9.0));
+    inserirDinamica(&dupla, criarJogador("Menor", 10, 1, 1.0));
+    inserirDinamica(&dupla, criarJogador("Maior", 90, 9, 9.0));
     mergeSortListaDupla(&dupla, ORDENAR_PONTUACAO);
     printf("Lista com 2 elementos após ordenação:\n");
-    imprimir(&dupla);
+    imprimirDinamica(&dupla);
     liberar_lista(&dupla);
 
     /* ---- Teste 5: lista já ordenada ---- */
     printf("=== Teste 5: lista já ordenada ===\n");
     NoDuplo *ordenada = NULL;
-    inserir(&ordenada, criarJogador("A", 500, 5, 5.0));
-    inserir(&ordenada, criarJogador("B", 400, 4, 4.0));
-    inserir(&ordenada, criarJogador("C", 300, 3, 3.0));
+    inserirDinamica(&ordenada, criarJogador("A", 500, 5, 5.0));
+    inserirDinamica(&ordenada, criarJogador("B", 400, 4, 4.0));
+    inserirDinamica(&ordenada, criarJogador("C", 300, 3, 3.0));
     mergeSortListaDupla(&ordenada, ORDENAR_PONTUACAO);
     printf("Lista já ordenada após merge sort:\n");
-    imprimir(&ordenada);
+    imprimirDinamica(&ordenada);
     liberar_lista(&ordenada);
 
     /* ---- Teste 6: lista em ordem inversa ---- */
     printf("=== Teste 6: lista em ordem inversa ===\n");
     NoDuplo *inversa = NULL;
-    inserir(&inversa, criarJogador("X", 100, 1, 1.0));
-    inserir(&inversa, criarJogador("Y", 200, 2, 2.0));
-    inserir(&inversa, criarJogador("Z", 300, 3, 3.0));
+    inserirDinamica(&inversa, criarJogador("X", 100, 1, 1.0));
+    inserirDinamica(&inversa, criarJogador("Y", 200, 2, 2.0));
+    inserirDinamica(&inversa, criarJogador("Z", 300, 3, 3.0));
     mergeSortListaDupla(&inversa, ORDENAR_PONTUACAO);
     printf("Lista inversa após merge sort:\n");
-    imprimir(&inversa);
+    imprimirDinamica(&inversa);
     liberar_lista(&inversa);
 
     printf("Todos os testes finalizados.\n");

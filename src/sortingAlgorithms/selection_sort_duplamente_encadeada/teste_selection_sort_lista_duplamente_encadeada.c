@@ -24,20 +24,20 @@ int main(void)
 
     printf("=== Teste: Selection Sort (Lista Duplamente Encadeada) ===\n");
 
-    inserir(&lista, criarJogador("Alice",   300,  5, 12.5));
-    inserir(&lista, criarJogador("Bob",     150,  3,  8.0));
-    inserir(&lista, criarJogador("Carlos",  500, 10, 25.0));
-    inserir(&lista, criarJogador("Diana",   200,  4, 10.0));
-    inserir(&lista, criarJogador("Eve",     500,  8, 20.0));
-    inserir(&lista, criarJogador("Frank",    50,  1,  2.0));
+    inserirDinamica(&lista, criarJogador("Alice",   300,  5, 12.5));
+    inserirDinamica(&lista, criarJogador("Bob",     150,  3,  8.0));
+    inserirDinamica(&lista, criarJogador("Carlos",  500, 10, 25.0));
+    inserirDinamica(&lista, criarJogador("Diana",   200,  4, 10.0));
+    inserirDinamica(&lista, criarJogador("Eve",     500,  8, 20.0));
+    inserirDinamica(&lista, criarJogador("Frank",    50,  1,  2.0));
 
     printf("\nAntes da ordenação:\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     ordenacaoPorSelecaoListaDuplamenteEncadeada(&lista, ORDENAR_PONTUACAO);
 
     printf("\nDepois da ordenação (pontuação decrescente):\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     /* Verificação estrutural dos ponteiros prev */
     printf("\nVerificando ponteiros prev... ");

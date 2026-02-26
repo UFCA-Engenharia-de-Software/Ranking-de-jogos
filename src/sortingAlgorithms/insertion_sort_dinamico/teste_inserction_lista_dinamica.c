@@ -22,18 +22,18 @@ int main(void)
 {
     NoDuplo *lista = NULL;
 
-    inserir(&lista, criarJogador("Carlos", 300, 10, 25.5));
-    inserir(&lista, criarJogador("Ana", 150, 5, 10.0));
-    inserir(&lista, criarJogador("Bruno", 450, 15, 40.2));
-    inserir(&lista, criarJogador("Daniel", 200, 7, 18.4));
+    inserirDinamica(&lista, criarJogador("Carlos", 300, 10, 25.5));
+    inserirDinamica(&lista, criarJogador("Ana", 150, 5, 10.0));
+    inserirDinamica(&lista, criarJogador("Bruno", 450, 15, 40.2));
+    inserirDinamica(&lista, criarJogador("Daniel", 200, 7, 18.4));
 
     printf("Antes:\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     insertionSortListaDinamica(&lista, ORDENAR_PONTUACAO);
 
     printf("\nDepois:\n");
-    imprimir(&lista);
+    imprimirDinamica(&lista);
 
     liberar_lista(&lista);
 
