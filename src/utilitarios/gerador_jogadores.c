@@ -4,10 +4,19 @@
 #include <time.h>
 #include "gerador_jogadores.h"
 
+static void inicializar_seed_uma_vez(void)
+{
+    static int inicializado = 0;
+    if (!inicializado) {
+        srand((unsigned int)time(NULL));
+        inicializado = 1;
+    }
+}
+
 void gerarJogadores(Lista *lista, int quantidade, int tipo_ordem) {
 
     iniciarLista(lista);
-    srand(time(NULL));
+    inicializar_seed_uma_vez();
 
     for (int i = 0; i < quantidade; i++) {
         Jogador j;
@@ -34,7 +43,7 @@ void gerarJogadores(Lista *lista, int quantidade, int tipo_ordem) {
 
 void gerarJogadoresDinamica(NoDuplo **head, int quantidade, int tipo_ordem) {
     *head = NULL;
-    srand(time(NULL));
+    inicializar_seed_uma_vez();
 
     for (int i = 0; i < quantidade; i++) {
         Jogador novo_jogador;
