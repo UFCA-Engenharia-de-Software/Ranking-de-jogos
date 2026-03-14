@@ -77,14 +77,17 @@ Os algoritmos podem ordenar os jogadores pelos seguintes critérios:
 - `nivel`
 - `tempo_jogado`
 - `combinado` (desempate por múltiplos campos)
+### Complexidade e Implementacao
 
 ### Complexidade e Implementacao
 
-- **Bubble Sort**: iterativo. Melhor `O(n)`, medio `O(n^2)`, pior `O(n^2)`.
-- **Insertion Sort**: iterativo. Melhor `O(n)`, medio `O(n^2)`, pior `O(n^2)`.
-- **Selection Sort**: iterativo. Melhor `O(n^2)`, medio `O(n^2)`, pior `O(n^2)`.
-- **Merge Sort**: recursivo (divisao e conquista). Melhor `O(n log n)`, medio `O(n log n)`, pior `O(n log n)`.
-- **Quick Sort**: recursivo (particionamento, com median-of-three no dinamico). Melhor `O(n log n)`, medio `O(n log n)`, pior `O(n^2)`.
+| Algoritmo | Tipo | Melhor caso | Caso medio | Pior caso | Memoria auxiliar |
+| --- | --- | --- | --- | --- | --- |
+| Bubble Sort | Iterativo | `O(n)` | `O(n^2)` | `O(n^2)` | In-place |
+| Insertion Sort | Iterativo | `O(n)` | `O(n^2)` | `O(n^2)` | In-place |
+| Selection Sort | Iterativo | `O(n^2)` | `O(n^2)` | `O(n^2)` | In-place |
+| Merge Sort | Recursivo (divisao e conquista) | `O(n log n)` | `O(n log n)` | `O(n log n)` | Sem vetor auxiliar de elementos (usa pilha recursiva) |
+| Quick Sort | Recursivo (particionamento; pivo median-of-three) | `O(n log n)` | `O(n log n)` | `O(n^2)` | Dinamico: in-place; Estatico: vetor auxiliar de indices |
 
 ---
 
@@ -178,7 +181,6 @@ make plot
 
 ## Observações Técnicas
 
-- O projeto está em C (`gcc`, padrão C11).
 - A análise de desempenho deve sempre ser interpretada por:
   - algoritmo,
   - estrutura,
