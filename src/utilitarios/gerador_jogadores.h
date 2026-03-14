@@ -1,8 +1,8 @@
 #ifndef GERADOR_TESTES_H
 #define GERADOR_TESTES_H
 
-#include "../lista_encadeada_estatica.h" // Ajuste o caminho (../) se colocar em subpastas depois
-#include "../lista_encadeada_dinamica.h"
+#include "../estruturas/estatica/lista_encadeada_estatica.h" // Ajuste o caminho (../) se colocar em subpastas depois
+#include "../estruturas/dinamica/lista_encadeada_dinamica.h"
 
 // Definindo as constantes de ordem para o código ficar chique e legível
 #define ALEATORIA 1

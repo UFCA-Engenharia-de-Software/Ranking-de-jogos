@@ -41,33 +41,50 @@ impacta diretamente o desempenho.
 
 ## Estruturas de Dados
 
-- **Lista Encadeada Estática** (`src/lista_encadeada_estatica.*`)
+- **Lista Encadeada Estática** (`src/estruturas/estatica/lista_encadeada_estatica.*`)
   - Implementada com vetor pré-alocado e encadeamento por índices.
-- **Lista Duplamente Encadeada Dinâmica** (`src/lista_encadeada_dinamica.*`)
+- **Lista Duplamente Encadeada Dinâmica** (`src/estruturas/dinamica/lista_encadeada_dinamica.*`)
   - Implementada com alocação dinâmica de nós.
 
 ---
 
 ## Algoritmos Implementados
 
-Todos os algoritmos usam comparador comum (`sorting_utils`) para manter o critério de ordenação padronizado.
+Todos os algoritmos usam comparador comum (`utilitarios_ordenacao`) para manter o critério de ordenação padronizado.
 
 - **Bubble Sort**
-  - Estática: `src/sortingAlgorithms/bubble_sort_estatico/`
-  - Dinâmica: `src/sortingAlgorithms/bubble_doubly/`
+  - Estática: `src/algoritmos_ordenacao/bubble_sort_estatico/`
+  - Dinâmica: `src/algoritmos_ordenacao/bubble_sort_dinamico/`
 - **Insertion Sort**
-  - Estática: `src/sortingAlgorithms/insertion_sort_estatico/`
-  - Dinâmica: `src/sortingAlgorithms/insertion_sort_dinamico/`
+  - Estática: `src/algoritmos_ordenacao/insertion_sort_estatico/`
+  - Dinâmica: `src/algoritmos_ordenacao/insertion_sort_dinamico/`
 - **Selection Sort**
-  - Estática: `src/sortingAlgorithms/selection_estatico/`
-  - Dinâmica: `src/sortingAlgorithms/selection_sort_duplamente_encadeada/`
+  - Estática: `src/algoritmos_ordenacao/selection_sort_estatico/`
+  - Dinâmica: `src/algoritmos_ordenacao/selection_sort_dinamico/`
 - **Merge Sort** (recursivo)
-  - Estática: `src/sortingAlgorithms/merge_estatica/`
-  - Dinâmica: `src/sortingAlgorithms/merge_doubly/`
+  - Estática: `src/algoritmos_ordenacao/merge_sort_estatico/`
+  - Dinâmica: `src/algoritmos_ordenacao/merge_sort_dinamico/`
 - **Quick Sort** (recursivo)
-  - Estática: `src/sortingAlgorithms/quick_static/`
-  - Dinâmica: `src/sortingAlgorithms/quick_doubly/`
+  - Estática: `src/algoritmos_ordenacao/quick_sort_estatico/`
+  - Dinâmica: `src/algoritmos_ordenacao/quick_sort_dinamico/`
   - Estratégia de pivô: **median-of-three** (low/mid/high).
+
+## Tipos de Ordenação (Critérios)
+
+Os algoritmos podem ordenar os jogadores pelos seguintes critérios:
+
+- `pontuacao`
+- `nivel`
+- `tempo_jogado`
+- `combinado` (desempate por múltiplos campos)
+
+### Complexidade e Implementacao
+
+- **Bubble Sort**: iterativo. Melhor `O(n)`, medio `O(n^2)`, pior `O(n^2)`.
+- **Insertion Sort**: iterativo. Melhor `O(n)`, medio `O(n^2)`, pior `O(n^2)`.
+- **Selection Sort**: iterativo. Melhor `O(n^2)`, medio `O(n^2)`, pior `O(n^2)`.
+- **Merge Sort**: recursivo (divisao e conquista). Melhor `O(n log n)`, medio `O(n log n)`, pior `O(n log n)`.
+- **Quick Sort**: recursivo (particionamento, com median-of-three no dinamico). Melhor `O(n log n)`, medio `O(n log n)`, pior `O(n^2)`.
 
 ---
 
@@ -100,12 +117,13 @@ Saídas do benchmark:
 
 Script:
 
-- `src/graficos/gerador_de_graficos/grafico_de_barras.py`
+- `src/graficos/gerador_de_graficos/grafico.py`
 
 Saídas:
 
-- `src/graficos/out/barras_estatica.png`
-- `src/graficos/out/barras_dinamica.png`
+- `src/graficos/out/vertical_estatica.png`
+- `src/graficos/out/vertical_dinamica.png`
+- `src/graficos/out/vertical_unificado_geral.png`
 
 Dependências Python são gerenciadas com **uv** (`pyproject.toml`).
 
@@ -115,9 +133,11 @@ Dependências Python são gerenciadas com **uv** (`pyproject.toml`).
 
 ```text
 ├── src/
-│   ├── lista_encadeada_estatica.*
-│   ├── lista_encadeada_dinamica.*
-│   ├── sortingAlgorithms/                 # Implementações de ordenação
+│   ├── estruturas/
+│   │   ├── estatica/
+│   │   ├── dinamica/
+│   │   └── jogador/
+│   ├── algoritmos_ordenacao/              # Implementações de ordenação
 │   ├── utilitarios/                       # Geração de dados
 │   └── graficos/                          # Benchmark e geração de gráficos
 ├── resultados_execucoes.csv
@@ -140,12 +160,6 @@ make test
 
 ```bash
 make bench
-```
-
-Benchmark rápido (exemplo com 10 repetições):
-
-```bash
-BENCH_REPETICOES=10 make bench
 ```
 
 ### 3. Instalar dependências Python para gráficos

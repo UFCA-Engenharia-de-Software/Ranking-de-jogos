@@ -4,22 +4,22 @@
 #include <stdio.h>
 #include <time.h>
 
-#include "../lista_encadeada_dinamica.h"
-#include "../lista_encadeada_estatica.h"
+#include "../estruturas/dinamica/lista_encadeada_dinamica.h"
+#include "../estruturas/estatica/lista_encadeada_estatica.h"
 
-#include "../sortingAlgorithms/bubble_doubly/bubble_sort_dinamico.h"
-#include "../sortingAlgorithms/bubble_sort_estatico/bubble_sort_estatica.h"
-#include "../sortingAlgorithms/insertion_sort_dinamico/insertion_sort_dinamica.h"
-#include "../sortingAlgorithms/insertion_sort_estatico/insertion_sort_estatico.h"
-#include "../sortingAlgorithms/merge_doubly/merge_sort_doubly_linked_list.h"
-#include "../sortingAlgorithms/merge_estatica/merge_sort_lista_estatica.h"
-#include "../sortingAlgorithms/quick_doubly/quick_sort_lista_dupla.h"
-#include "../sortingAlgorithms/quick_static/quick_sort_lista_estatica.h"
-#include "../sortingAlgorithms/selection_estatico/selection_sort_estatico.h"
-#include "../sortingAlgorithms/selection_sort_duplamente_encadeada/selection_sort_lista_duplamente_encadeada.h"
+#include "../algoritmos_ordenacao/bubble_sort_dinamico/bubble_sort_dinamico.h"
+#include "../algoritmos_ordenacao/bubble_sort_estatico/bubble_sort_estatica.h"
+#include "../algoritmos_ordenacao/insertion_sort_dinamico/insertion_sort_dinamica.h"
+#include "../algoritmos_ordenacao/insertion_sort_estatico/insertion_sort_estatico.h"
+#include "../algoritmos_ordenacao/merge_sort_dinamico/merge_sort_lista_dinamica.h"
+#include "../algoritmos_ordenacao/merge_sort_estatico/merge_sort_lista_estatica.h"
+#include "../algoritmos_ordenacao/quick_sort_dinamico/quick_sort_lista_dinamica.h"
+#include "../algoritmos_ordenacao/quick_sort_estatico/quick_sort_lista_estatica.h"
+#include "../algoritmos_ordenacao/selection_sort_estatico/selection_sort_estatico.h"
+#include "../algoritmos_ordenacao/selection_sort_dinamico/selection_sort_lista_dinamica.h"
 
-#include "../jogador.h"
-#include "../sortingAlgorithms/sorting_utils.h"
+#include "../estruturas/jogador/jogador.h"
+#include "../utilitarios/utilitarios_ordenacao.h"
 #include "../utilitarios/gerador_jogadores.h"
 
 typedef long long int64;
@@ -140,7 +140,7 @@ int64 medir_tempo_merge_dinamico(int quantidade, int tipo_ordem) {
     gerarJogadoresDinamica(&head, quantidade, tipo_ordem);
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
-    mergeSortListaDupla(&head, ORDENAR_PONTUACAO);
+    mergeSortListaDinamica(&head, ORDENAR_PONTUACAO);
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
     liberar_lista(&head);
@@ -154,7 +154,7 @@ int64 medir_tempo_quick_dinamico(int quantidade, int tipo_ordem) {
     gerarJogadoresDinamica(&head, quantidade, tipo_ordem);
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
-    quickSortDoublyLinkedList(&head, ORDENAR_PONTUACAO);
+    quickSortListaDinamica(&head, ORDENAR_PONTUACAO);
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
     liberar_lista(&head);
@@ -168,7 +168,7 @@ int64 medir_tempo_selection_dinamico(int quantidade, int tipo_ordem) {
     gerarJogadoresDinamica(&head, quantidade, tipo_ordem);
 
     clock_gettime(CLOCK_MONOTONIC, &inicio);
-    ordenacaoPorSelecaoListaDuplamenteEncadeada(&head, ORDENAR_PONTUACAO);
+    ordenacaoPorSelecaoListaDinamica(&head, ORDENAR_PONTUACAO);
     clock_gettime(CLOCK_MONOTONIC, &fim);
 
     liberar_lista(&head);
