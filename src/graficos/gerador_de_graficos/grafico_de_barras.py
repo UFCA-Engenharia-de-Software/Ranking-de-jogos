@@ -39,7 +39,7 @@ def gerar_barras(media_csv: Path, out_dir: Path) -> None:
         bars = ax.bar(resumo["algoritmo"], resumo["media_ms"], color="#4c78a8")
 
         ax.set_title(f"Tempo médio por algoritmo - estrutura {estrutura}")
-        ax.set_xlabel("Algoritmo")
+        ax.set_xlabel("")
         ax.set_ylabel("Tempo médio (ms)")
         ax.grid(axis="y", alpha=0.3)
 
