@@ -132,6 +132,60 @@ Dependências Python são gerenciadas com **uv** (`pyproject.toml`).
 
 ---
 
+## Gráficos do Artigo
+
+Os gráficos utilizados no artigo estão em `docs/`:
+
+- Estrutura estática  
+  ![Gráfico do artigo - estrutura estática](docs/grafico_artigo_estatico.jpeg)
+- Estrutura dinâmica  
+  ![Gráfico do artigo - estrutura dinâmica](docs/grafico_artigo_dinamico.jpeg)
+
+---
+
+## Como Gerar Seus Próprios Gráficos (Passo a Passo)
+
+Qualquer pessoa que rodar o projeto pode gerar seus próprios dados e gráficos.
+
+### 1. Compilar e testar
+
+```bash
+make test
+```
+
+### 2. Rodar o benchmark para gerar os CSVs
+
+```bash
+make bench
+```
+
+Isso gera:
+
+- `resultados_execucoes.csv`
+- `resultados_medias.csv`
+
+### 3. Instalar dependências de gráficos
+
+```bash
+make plot-deps
+```
+
+### 4. Gerar os gráficos
+
+```bash
+make plot
+```
+
+Saídas esperadas:
+
+- `src/graficos/out/vertical_estatica.png`
+- `src/graficos/out/vertical_dinamica.png`
+- `src/graficos/out/vertical_unificado_geral.png`
+
+Com isso, você cria os seus próprios gráficos a partir da sua execução local.
+
+---
+
 ## Estrutura do Repositório
 
 ```text
